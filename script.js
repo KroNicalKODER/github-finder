@@ -46,7 +46,7 @@ const getRepositories = async (data) => {
 
     const page = document.getElementById('page').value;
     const limit = document.getElementById('limit').value;
-    const rep_response = await fetch(`http://localhost:8800/repos?uname=${data.login}&page=${page}&limit=${limit}`)
+    const rep_response = await fetch(`https://github-finder-qts6.onrender.com/repos?uname=${data.login}&page=${page}&limit=${limit}`)
     const repos = await rep_response.json()
     
     repos.data.forEach(repo => {
