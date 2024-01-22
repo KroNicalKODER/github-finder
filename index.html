@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Fyle | GET REPOS IN A PLACE</title>
+</head>
+<body>
+    <div class="search-container">
+        <input type="text" name="" placeholder="Search By Username" id="user-search-input" class="search">
+        <button class="search-btn cursor-pointer" id="search-user">Search</button>
+        <div class="saved-wrapper" id="saved-wrapper">
+            <label for="saved-users">Saved: </label>
+            <select name="saved-users" id="saved-users-select">
+            </select>
+            <button class="search-btn" id="save-current"> Save This </button>
+        </div>
+    </div>
+    <hr class="line-search"/>
+    <div class="user-wrapper" id="user-wrapper-id">
+        
+        <div class="user-details" id="">
+    
+        </div>
+    </div>
+
+    <div class="repo-search-wrapper">
+        
+        <input type="text" name="repo-search" class="repo-search" id="repo-search-input" placeholder="Search Repositories"/>
+        <button class="repo-search-btn cursor-pointer" id="repo-search">Search</button>
+        
+        <div class="page-limit-wrapper">
+            <input type="number" name="" id="page" class="page" value="1" placeholder="Page" />
+            <input type="number" name="" id="limit" class="page" value="10" placeholder="Limit" />
+            <button id="LP-search" class="repo-search-btn cursor-pointer">Search-LP</button>
+        </div>
+    </div>
+
+    <div class="repo-wrapper no-scrollbar">
+        <div class="repos" id="repos-id">
+            <!-- repos will be populated here -->
+        </div>
+    </div>
+    <div style="align-self: center;">shift+wheel when you see repositories</div>
+</body>
+<script src="./script.js"></script>
+</html>
