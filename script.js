@@ -9,6 +9,9 @@ savedUsers.forEach(user => {
     populateThis+=`<option value=${user}>${user}</option>`
 })
 
+const loader = document.createElement('div')
+loader.innerHTML = 'Loading...'
+
 document.getElementById('saved-users-select').innerHTML = populateThis
 
 document.getElementById('save-current').addEventListener('click',()=>{
@@ -42,13 +45,14 @@ document.getElementById('saved-users-select').addEventListener('change',()=>{
 const getRepositories = async (data) => {
     
     let reposWrapper = document.getElementById('repos-id')
-    reposWrapper.innerHTML = ''
-
+    
     const page = document.getElementById('page').value;
     const limit = document.getElementById('limit').value;
+    reposWrapper.innerHTML = '<div>Loading</div>'
     const rep_response = await fetch(`http://localhost:8800/repos?uname=${data.login}&page=${page}&limit=${limit}`)
     const repos = await rep_response.json()
     
+    reposWrapper.innerHTM = ''
     repos.data.forEach(repo => {
         reposWrapper.innerHTML += `
         <a class="card" href=${repo.html_url} target='_blank'>
@@ -69,9 +73,11 @@ const getRepositories = async (data) => {
 const getUserRepository = async ()=>{
     const repoName = document.getElementById('repo-search-input').value
     try {
+
+        let reposWrapper = document.getElementById('repos-id')
+        reposWrapper.innerHTML='<div>Loading</div>'
         const rep_response = await fetch(`https://api.github.com/repos/${globalUserData.login}/${repoName}`)
         const repo = await rep_response.json()
-        let reposWrapper = document.getElementById('repos-id')
         reposWrapper.innerHTML = `
         <a class="card" href=${repo.html_url} target='_blank'>
             <div class="repo-name">${repo.name}</div>
@@ -102,9 +108,13 @@ document.getElementById('LP-search').addEventListener('click', async() => {
 document.getElementById('search-user').addEventListener('click', async ()=>{
     const username = document.getElementById('user-search-input').value
     const url = 'https://api.github.com/users/' + username
+    const loaddd = document.getElementById("user-wrapper-id")
+    
+    loaddd.innerHTML = '<div class="user-details">Loading</div>'
+    
     const response = await fetch(url)
     const data = await response.json()
-
+    
     //** GETTING THE REPOSITORIES */
     globalUserData = data
     getRepositories(data)
